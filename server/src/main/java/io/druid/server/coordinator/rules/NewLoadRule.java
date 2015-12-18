@@ -54,13 +54,14 @@ public abstract class NewLoadRule implements Rule
     final Map<String, Integer> loadStatus = Maps.newHashMap();
 
     int totalReplicantsInCluster = params.getSegmentReplicantLookup().getTotalReplicants(segment.getIdentifier());
-    for (Map.Entry<String, Integer> entry : getTieredReplicants().entrySet()) {
+    /*for (Map.Entry<String, Integer> entry : getTieredReplicants().entrySet()) {
       final String tier = entry.getKey();
       final int expectedReplicantsInTier = entry.getValue();
       final int totalReplicantsInTier = params.getSegmentReplicantLookup()
                                               .getTotalReplicants(segment.getIdentifier(), tier);
       final int loadedReplicantsInTier = params.getSegmentReplicantLookup()
-                                         .getLoadedReplicants(segment.getIdentifier(), tier);
+                                         .getLoadedReplicants(segment.getIdentifier(), tier);*/
+    
 
       final MinMaxPriorityQueue<ServerHolder> serverQueue = params.getDruidCluster().getServersByTier(tier);
       if (serverQueue == null) {
